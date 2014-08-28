@@ -1,6 +1,6 @@
 <?php
 /**
- * configuration class defines
+ * configuration class
  */
 
 class APP_Config{
@@ -14,7 +14,7 @@ class APP_Config{
     /**
 	 * Configuration constants
 	 */
-    const  Endpoint = 'https://endpoint.example.com',
+    const Endpoint = 'https://endpoint.example.com',
            ApiKey = '1234567'
            ;
 	
