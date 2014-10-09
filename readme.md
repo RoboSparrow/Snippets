@@ -1,1 +1,1 @@
-Dumping ground for more or less useful snippets
+Dump for more or less useful code snippets. Because I am suffering from `code amnesia`. Utterly unspectacular.
