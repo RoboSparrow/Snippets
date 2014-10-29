@@ -4,12 +4,11 @@ var elementUtils = {
         var classes = element.className.split(/\s+/);
         var length = classes.length;
         for(var i = 0; i < length; i++) {
-        if (classes[i] === name) {
-            classes.splice(i, 1);
-            break;
+            if (classes[i] === name) {
+                classes.splice(i, 1);
+                break;
+            }
         }
-        }
-        // The className is not found
         if (length === classes.length) {
             classes.push(name);
         }
