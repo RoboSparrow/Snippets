@@ -26,7 +26,7 @@ var isEmptyObject = function(obj) {
         return false;
     }
     // array
-    if(obj.hasOwnProperty('length')){
+    if(obj.hasOwnProperty('length') && obj.length){
         return true;
     }
     for(var key in obj) {
