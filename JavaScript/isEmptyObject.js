@@ -12,7 +12,9 @@ var isEmptyObject = function(obj) {
 };
 
 /**
- * Check if object is "truthy", i.e. has at least one property
+ * Check if an object is truthy (is object and and has properties)
+ * @param object obj Object to validate
+ * @return boolean
  */
  var objectTruthy = function(obj) {
     // typeof
@@ -25,10 +27,11 @@ var isEmptyObject = function(obj) {
     }
     // array
     if(obj.hasOwnProperty('length')){
-        return true
+        return true;
     }
     for(var key in obj) {
         return true;
     }
+    // object > property
     return false;
 };
