@@ -10,3 +10,25 @@ var isEmptyObject = function(obj) {
     }
     return true;
 };
+
+/**
+ * Check if object is "truthy", i.e. has at least one property
+ */
+ var objectTruthy = function(obj) {
+    // typeof
+    if(typeof obj !== 'object'){
+        return false;
+    }
+    // null
+    if(obj === null){
+        return false;
+    }
+    // array
+    if(obj.hasOwnProperty('length')){
+        return true
+    }
+    for(var key in obj) {
+        return true;
+    }
+    return false;
+};
