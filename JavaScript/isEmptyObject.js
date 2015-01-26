@@ -5,18 +5,25 @@
  */
 var isEmptyObject = function(obj) {
     for(var key in obj) {
-        if(obj.hasOwnProperty(key))
+        if(obj.hasOwnProperty(key)){
             return false;
+        }
     }
     return true;
+    //// ECMA 5
+    // return(Object.keys(obj).length === 0)  true : false;
 };
 
 /**
  * Check if an object is truthy (is object and and has properties)
  * @param object obj Object to validate
+ * @param object includeArrays Flags whether arrays should be treated as objects or not (default: no)
  * @return boolean
  */
- var objectTruthy = function(obj) {
+ var objectTruthy = function(obj, includeArrays) {
+    
+    includeArrays = includeArrays || false;
+    
     // typeof
     if(typeof obj !== 'object'){
         return false;
@@ -26,12 +33,9 @@ var isEmptyObject = function(obj) {
         return false;
     }
     // array
-    if(obj.hasOwnProperty('length') && obj.length){
-        return true;
+    if(obj.hasOwnProperty('length')){
+        return (includeArrays) ? true : false;
     }
-    for(var key in obj) {
-        return true;
-    }
-    // object > property
-    return false;
+    return true;
+    
 };
