@@ -40,4 +40,4 @@ var Cookie = {
 //// PHP
 // Set cookie with RAW urlencoding in PHP so it can be read via JavaScript
 // @see http://stackoverflow.com/a/2678602
-// $cookie = setrawcookie($name, rawurlencode(json_encode($date)), $expiresAt);
+// $cookie = setrawcookie($name, rawurlencode(json_encode($data)), $expiresAt);
