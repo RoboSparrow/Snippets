@@ -1,25 +1,45 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+
     pkg: grunt.file.readJSON('package.json'),
+
+    // banner
+    meta: {
+      banner:
+        [
+            '/**',
+            ' * <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>',
+            ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>',
+            ' * Licensed <%= pkg.licenses.type %> <<%= pkg.licenses.url %>>',
+            ' */'
+        ].join("\n")
+    },
+
+    // concat your js files
     concat: {
       options: {
-        separator: ';'
+        separator: ';',
+        banner: '<%= meta.banner %>\n'
       },
       dist: {
         src: ['src/**/*.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
+
     copy: {
       dist: {
         src: [
-            //vendors
-            'vendor/**/build/*.js', 
-            'vendor/**/dist/*.js'
+            // vendors, this  rule is very broad, so specify this for your module
+            'vendor/**/build/*.js',
+            'vendor/**/dist/*.js',
+            'vendor/**/build/*.css',
+            'vendor/**/dist/*.css'
         ],
         dest: 'dist/'
       },
+
       html: {
         expand: true,
         cwd: 'src/',
@@ -27,14 +47,16 @@ module.exports = function(grunt) {
         dest: 'dist/'
       }
     },
+
     clean: {
         build: {
             src: [ 'build' ]
         }
     },
+
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+        banner: '<%= meta.banner %>\n'
       },
       dist: {
         files: {
@@ -42,6 +64,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     jshint: {
       files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
       options: {
@@ -54,11 +77,13 @@ module.exports = function(grunt) {
         }
       }
     },
-    //// configure watch task
+
+    // configure watch task
     watch: {
       files: ['<%= jshint.files %>'],
       tasks: ['jshint', 'concat']
     }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -66,11 +91,19 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
+  // perform tasks, just comment out what you don't need
   grunt.registerTask(
-    'default', 
-    'Compiles all of the assets and copies the files to the build directory.', 
-    ['clean', 'jshint', 'concat', 'copy']
+    'default',
+    'Compiles all of the assets and copies the files to the build directory.',
+    [
+        'clean',
+        'jshint',
+        'concat',
+        'copy',
+        'uglify'
+    ]
   );
 
 };
