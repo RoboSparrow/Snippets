@@ -2,10 +2,7 @@
  * Dynamically load test js into head. 
  * Use same slot for loading, so only one script can be loaded at one time.
  */
-var loadTests = function(file) {
-    var id = 'bc-tests';
-    file = '<my_path>/' + file+ '.js';
-    
+var loadTests = function(file, id) {
     var script = document.createElement('script');
     var target = document.getElementById(id);
     
