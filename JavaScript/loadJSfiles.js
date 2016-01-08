@@ -4,7 +4,7 @@
  */
 var loadTests = function(file) {
     var id = 'bc-tests';
-    file = 'Brightcookie/Tests/' + file+ '.js';
+    file = '<my_path>/' + file+ '.js';
     
     var script = document.createElement('script');
     var target = document.getElementById(id);
