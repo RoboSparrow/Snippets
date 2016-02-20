@@ -1,4 +1,4 @@
-Falsy vaues:
+Falsy values:
 
 * `null`
 * `false` 
