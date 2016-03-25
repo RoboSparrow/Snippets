@@ -1,3 +1,4 @@
+/* jshint esversion: 3 */
 
 var elementUtils = {
     toggleClass: function(element, name) {
@@ -63,18 +64,16 @@ elem4.className = 'someClass someOtherClass';
 var elem5 = document.createElement('div');
 elem5.className = 'someClass test-class someOtherClass';
 
-
-
 it("should be able to find class names in elements.", function() {
     var hasClass = elementUtils.hasClass(elem1, 'test');
     expect(hasClass).toBe(false);
-    var hasClass = elementUtils.hasClass(elem2, 'test');
+    hasClass = elementUtils.hasClass(elem2, 'test');
     expect(hasClass).toBe(true);
-    var hasClass = elementUtils.hasClass(elem3, 'test');
+    hasClass = elementUtils.hasClass(elem3, 'test');
     expect(hasClass).toBe(true);
-    var hasClass = elementUtils.hasClass(elem4, 'test');
+    hasClass = elementUtils.hasClass(elem4, 'test');
     expect(hasClass).toBe(false);
-    var hasClass = elementUtils.hasClass(elem5, 'test');
+    hasClass = elementUtils.hasClass(elem5, 'test');
     expect(hasClass).toBe(false);
 });
 
@@ -87,13 +86,13 @@ it("should be able to add class names to elements.", function() {
 });
 
 it("should not add class names to elements where the class name alredy exists.", function() {
-    var before = elem2.className; 
+    var add = elem2.className; 
     elementUtils.addClass(elem2, 'test');
     expect(elem2.className).toBe(before);
-    var before = elem3.className; 
+    add = elem3.className; 
     elementUtils.addClass(elem3, 'test');
     expect(elem3.className).toBe(before);
-    var before = elem5.className; 
+    add = elem5.className; 
     elementUtils.addClass(elem5, 'test-class');
     expect(elem5.className).toBe(before);
 });

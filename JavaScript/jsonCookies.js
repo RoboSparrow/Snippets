@@ -1,8 +1,11 @@
+/* jshint esversion: 3 */
+
 /**
  * Simple Json Cookie object.
  * Sets, retrieves and deletes cookies
  * @see Based on this great post: http://stackoverflow.com/a/11344672
  */
+ 
 var Cookie = {
 
     set : function(name, value, expiryDate) {

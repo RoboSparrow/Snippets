@@ -1,8 +1,11 @@
+/* jshint esversion: 3 */
+
 /**
  * Check if an object is empty
- * @param object obj Object to validate
- * @return boolean
+ * @param {object} obj Object to validate
+ * @return {boolean}
  */
+ 
 var isEmptyObject = function(obj) {
     for(var key in obj) {
         if(obj.hasOwnProperty(key)){
@@ -16,10 +19,11 @@ var isEmptyObject = function(obj) {
 
 /**
  * Check if an object is truthy (is object and and has properties)
- * @param object obj Object to validate
- * @param object includeArrays Flags whether arrays should be treated as objects or not (default: no)
- * @return boolean
+ * @param {object} obj Object to validate
+ * @param {object} includeArrays Flags whether arrays should be treated as objects or not (default: no)
+ * @return {boolean}
  */
+ 
  var objectTruthy = function(obj, includeArrays) {
     
     includeArrays = includeArrays || false;

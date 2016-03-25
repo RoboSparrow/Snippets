@@ -1,6 +1,7 @@
 /**
  * @see: http://stackoverflow.com/a/2455378
  */
+ 
 var QueryVars = {
 
 	/**
@@ -22,9 +23,10 @@ var QueryVars = {
 		}
 		return false;
 	},
+    
 	/**
-	 * @param {String} key
-	 * @param {String} value
+	 * @param {string} key
+	 * @param {string} value
 	 * @param {string} url  - if not set == location.href
 	 * @return {string} url
 	 */
