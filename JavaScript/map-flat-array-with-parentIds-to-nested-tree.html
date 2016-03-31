@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Convert flat array with parent ids to nested array</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <script>
+
+'use strict';
+
+//////// LIB
+
+/**
+ * Convert flat array with parent ids to nested array
+ * This solution is a bit memory intensive but it leaves the original data untouched
+ *
+ * Usage: var nested = nestedTree.build(original);
+ *
+ * Example
+ * var original = [
+ *    {id: 0},
+ *    {id: 0, parent: 1}
+ * ];
+ * var result = [
+ *    {
+ *        id: 0,
+ *        // ... other params you want to map over
+ *        children[
+ *            {
+ *                id: 1,
+ *                // ... other params you want to map over
+ *                children: []
+ *            }
+ *        ]
+ *    }
+ * ]
+ *
+ * */
+
+var nestedTree = {
+
+    /**
+     * Creates a normalised data array for this.build()
+     * customize this so it meets your model
+     * @param data {Object[]} original array
+     * @return {Object[]} mapped array with parentId and additional original params to be carried over
+     */
+
+    _map: function(data){
+        var copy = [];
+        for(var i = 0; i < data.length; i++){
+
+            // parent Id normalization
+            var parent = (data[i].hasOwnProperty('parent') && data[i].parent) ? data[i].parent : {};
+            var parentId = (parent.hasOwnProperty('id') && parent.id) ? parent.id : false;
+
+            copy.push({
+                id: data[i].id,
+                name: data[i].name,
+                // add/normalize any other parameter you need
+                // parentId
+                parentId: parentId
+            });
+        }
+        return copy;
+    },
+
+    /**
+     * Convert flat array with parent ids to nested array
+     * @param data {Object[]} original array, will be handed over to this._map()
+     * @return {Object[]} mapped array with parentId and additional original params to be carried over
+     */
+
+    build: function(data){
+
+        var map = {};
+        var node;
+        var roots = [];
+        var nodes = this._map(data);
+
+        for (var i = 0; i < nodes.length; i += 1) {
+            node = nodes[i];
+            node.children = [];
+            map[node.id] = i; // use map to look-up the parents
+            if (node.parentId !== false) {
+                nodes[map[node.parentId]].children.push(node);
+            } else {
+                roots.push(node);
+            }
+        }
+        return roots;
+    }
+};
+
+//////// TEST
+
+var data = [
+    {id: 1, name: 'hello 1', parent:{id:0}},
+    {id: 2, name: 'hello 2', parent:{id:0}},
+    {id: 3, name: 'hello 3', parent:{id:1}},
+    {id: 4, name: 'hello 4', parent:{id:3}},
+    {id: 5, name: 'hello 5', parent:{id:4}},
+    {id: 6, name: 'hello 6', parent:{id:4}},
+    {id: 7, name: 'hello 7', parent:{id:3}},
+    {id: 8, name: 'hello 8', parent:{id:2}},
+    {id: 9, name: 'hello no parent'},
+    {id: 10, name: 'hello no parent', parent: null},
+    {id: 11, name: 'hello no parent', parent: {id:false}}
+];
+
+var result = nestedTree.build(data);
+
+console.log(' -- Original');
+console.log(data);
+
+console.log('-- Result');
+console.log(result);
+
+
+document.addEventListener('DOMContentLoaded', function(event){
+     var node = document.createElement('section');
+
+     node.innerHTML += [
+        '<div style="width: 40%; float: right;">',
+        '<h1>Original</h1>',
+        '<pre><code>' + JSON.stringify(data, false, 4) + '</code></pre>',
+        '</div>'
+     ].join("\n");
+
+     node.innerHTML += [
+        '<div style="width: 40%; float: lefted;">',
+        '<h1>Nested Tree</h1>',
+        '<pre><code>' + JSON.stringify(result, false, 4) + '</code></pre>',
+        '</div>'
+     ].join("\n");
+
+     document.body.appendChild(node);
+});
+
+
+  </script>
+</head>
+
+<body>
+</body>
+</html>
