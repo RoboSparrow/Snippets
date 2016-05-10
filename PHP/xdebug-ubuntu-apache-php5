@@ -1,0 +1,30 @@
+Install xDebug
+
+```
+sudo apt-get install php5-dev php-pear
+sudo pecl install xdebug
+```
+Locate `xdebug.so`
+
+```
+find /usr/lib -name 'xdebug.so' 2> /dev/null
+```
+<path>xdebug.so
+
+Add to `php.ini`
+
+```
+sudo vim /etc/php/apache2/php.ini
+```
+```
+;; added: xdebug
+zend_extension="<path>/xdebug.so"
+xdebug.remote_enable = 1
+```
+
+Restart and check if module enabled
+
+```
+sudo /etc/init.d/apache2 restart
+php -i | grep -i xdebug
+```
