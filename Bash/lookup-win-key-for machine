@@ -1,0 +1,21 @@
+```
+$ ls /sys/firmware/acpi/tables
+```
+
+```
+APIC  DSDT     ECDT  FACS  HPET  MCFG  SLIC   SSDT2  SSDT4
+BGRT  dynamic  FACP  FPDT  LPIT  MSDM  SSDT1  SSDT3  SSDT5
+```
+
+```
+$ sudo xxd /sys/firmware/acpi/tables/MSDM
+
+0000000: 4d53 444d 5500 0000 031e 544f 5341 5355  BLAHH.....BLAHH
+0000010: 544f 5341 5355 3030 0420 2206 4d53 4654  BLAHH. ".BLAHH
+0000020: 1300 0100 0100 0000 0000 0000 0100 0000  ................
+0000030: 0000 0000 1d00 0000 3451 3347 382d 4e59  ........XXXXX-XX
+0000040: 5756 582d 384a 4b46 482d 344b 5432 4b2d  XXX-XXXXX-XXXXX-
+0000050: 3636 4d43 44                             XXXXX    
+```
+
+
