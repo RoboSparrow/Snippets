@@ -1,4 +1,4 @@
-## older size
+## Folder size
 
 simple du command to give size of next level of subfolder in MB
 
@@ -20,7 +20,7 @@ Grand total
 du -c <folder>
 ```
 
-## Disk Space
+## Disk Usage
 
 ```
 df -h
