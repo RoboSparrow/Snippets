@@ -1,0 +1,5 @@
+Recursive copy
+
+```bash
+rsync -avh <source-dir>/ <deat-dir> # mind the / !!
+```
