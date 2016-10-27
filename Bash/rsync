@@ -3,3 +3,9 @@ Recursive copy
 ```bash
 rsync -avh <source-dir>/ <deat-dir> # mind the / !!
 ```
+
+create `rsync` enabled tarball 
+
+```bash 
+tar -cvf <source-dir>/ | gzip --rsyncable > file.tar.gz
+```
