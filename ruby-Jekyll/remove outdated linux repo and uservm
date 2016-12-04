@@ -1,0 +1,38 @@
+# Uninstall
+
+```bash
+sudo apt-get purge ruby
+sudo apt-get purge jekyll
+# if which github-pages
+sudo apt-get purge github-pages
+```
+#Install
+
+## Ruby  
+linux repos are outdated, use rvmfor latest
+
+```bash
+curl -L https://get.rvm.io | bash -s stable --autolibs=enabled --ruby
+
+rvm install ruby --latest
+```
+* grab installed version from cli output
+* enable *un command as login shell* option in gnome-terminal: https://rvm.io/integration/gnome-terminal
+* start new terminal session
+
+```bash
+rvm use <version> --default
+```
+
+## Jekyll
+
+```bash
+gem install jekyll --no-rdoc --no-ri
+
+```
+
+## github-pages
+
+```bash
+gem install github-pages --no-rdoc --no-ri
+```
