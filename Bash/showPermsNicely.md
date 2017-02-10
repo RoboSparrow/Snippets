@@ -9,3 +9,8 @@ stat -c '%A %a %U:%G %n  (%s Bytes, %F)' *
 %s     Total size, in bytes
 %F     File type
 
+```
+stat -c "%a %n" *
+```
+ %a     Access rights in octal
+ %n     File name
