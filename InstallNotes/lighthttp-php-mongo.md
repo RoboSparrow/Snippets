@@ -62,7 +62,7 @@ extension=mongodb.so
 sudo service lighttpd force-reload
 ```
 
-#Misc
+# Misc
 
 ```
 sudo service lighttpd reload
