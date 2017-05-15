@@ -12,8 +12,13 @@ conf template
 
 ```
 <VirtualHost *:80>
+    ServerName <DOMAINNAME>
+    Redirect / http://www.<DOMAINNAME>
+</VirtualHost>
+
+<VirtualHost *:80>
     ServerAdmin <EMAIL>
-    ServerName <URI>
+    ServerName www.<DOMAINNAME>
 
     DocumentRoot /home/<USER>/www/<SITE>
 
@@ -24,11 +29,11 @@ conf template
         Require all granted
     </Directory>
     
-    <Directory /home/<USER>/www/<SITE>
-            Options Indexes FollowSymLinks MultiViews
-            AllowOverride All
-            Order allow,deny
-            allow from all
+    <Directory /home/<USER>/www/<SITE>>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
     </Directory>
 
     #####
