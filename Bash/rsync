@@ -9,3 +9,11 @@ create `rsync` enabled tarball
 ```bash 
 GZIP='--rsyncable' tar cvzf file.tar.gz /my/dir
 ```
+
+remote ssh
+
+* https://www.digitalocean.com/community/tutorials/how-to-copy-files-with-rsync-over-ssh
+
+```
+rsync -avz -e ssh fromdir user@host:/todir
+```
