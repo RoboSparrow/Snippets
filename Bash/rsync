@@ -9,6 +9,7 @@ create `rsync` enabled tarball
 ```bash 
 GZIP='--rsyncable' tar cvzf file.tar.gz /my/dir
 ```
+use tar `-h` option for following symlinks
 
 remote ssh
 
