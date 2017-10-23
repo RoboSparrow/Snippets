@@ -1,3 +1,5 @@
+CentOs
+
  /etc/init.d/mysqld start
  /etc/init.d/mysqld stop
  /etc/init.d/mysqld restart
@@ -8,7 +10,7 @@ or
  service mysqld stop
  service mysqld restart
 
-or
+Ubuntu
 
  service mysql start
  service mysql stop
