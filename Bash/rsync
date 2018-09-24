@@ -18,3 +18,11 @@ remote ssh
 ```
 rsync -avz -e ssh fromdir user@host:/todir
 ```
+
+``bash
+rsync -azP ~/dir1 <username>@<remote_host>:<destination_directory>
+
+# - a: archive mode (permissions, symlinks recursive ets
+# - z: reduce the network transfer by adding compression
+# - P:  gives you a progress bar for the transfers and the second allows you to resume interrupted transfers:
+```
