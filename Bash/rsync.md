@@ -15,11 +15,11 @@ remote ssh
 
 * https://www.digitalocean.com/community/tutorials/how-to-copy-files-with-rsync-over-ssh
 
-```
+```bash
 rsync -avz -e ssh fromdir user@host:/todir
 ```
 
-``bash
+```bash
 rsync -azP ~/dir1 <username>@<remote_host>:<destination_directory>
 
 # - a: archive mode (permissions, symlinks recursive ets
