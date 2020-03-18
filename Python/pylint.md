@@ -5,5 +5,5 @@ pylint --generate-rcfile > ./.pylintrc
 
 ```
 # find unused imports in current dir
-pylint * | grep "unused-import"
+pylint *.py | grep "unused-import"
 ```
