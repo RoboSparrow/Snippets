@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+dotenv() {
+    # extracts value for a given key from a configuration file
+    # find var (arg1) in file (arg2) , split line by '=', return second value and trim whitespace
+    grep "${1}" "${2}"| cut -d '=' -f2 | xargs
+}
+
+echo "$(dotenv MY_ENV_VAR .env)"
